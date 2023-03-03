@@ -83,14 +83,14 @@ void loop() {
 
   if (!currentFWSent) {
     currentFWSent = tb.Firmware_Send_Info(CURRENT_FIRMWARE_TITLE, CURRENT_FIRMWARE_VERSION) && tb.Firmware_Send_State(FW_STATE_UPDATED);
+  } else {
+    blink();
   }
 
   if (!updateRequestSent) {
     Serial.println(F("Firwmare Update Subscription..."));
     updateRequestSent = tb.Subscribe_Firmware_Update(callback);
   }
-
-  blink();
 
   tb.loop();
 }
