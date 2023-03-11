@@ -29,7 +29,6 @@ constexpr char WIFI_PASSWORD[] PROGMEM = "YOUR_WIFI_PASSWORD";
 constexpr char TOKEN[] PROGMEM = "YOUR_DEVICE_ACCESS_TOKEN";
 
 constexpr char TONYSPACE_SERVER[] PROGMEM = "vsmqtt.space";
-constexpr uint16_t TONYSPACE_PORT PROGMEM = 8080U;
 
 // Maximum size packets will ever be sent or received by the underlying MQTT client,
 // if the size is to small messages might not be sent or received messages will be discarded
@@ -75,7 +74,7 @@ void loop() {
     // Reconnect to the Tony space server,
     // if a connection was disrupted or has not yet been established
     Serial.printf("Connecting to: (%s) with token (%s)\n", TONYSPACE_SERVER, TOKEN);
-    if (!tb.connect(TONYSPACE_SERVER, TOKEN, TONYSPACE_PORT)) {
+    if (!tb.connect(TONYSPACE_SERVER, TOKEN)) {
       Serial.println(F("Failed to connect"));
       return;
     }
